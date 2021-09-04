@@ -82,4 +82,26 @@ public class FinancingTests {
 			f.setMonths(70);
 		});
 	}
+	
+	@Test
+	public void entryShouldReturnTwentyPercentOfTotalAmount() {
+		
+		Financing f = FinancingFactory.createFinancing(100000.0, 2000.0, 80);
+		double expectedValue = 20000.0;
+		
+		double value = f.entry();
+		
+		Assertions.assertTrue(expectedValue == value);
+	}
+	
+	@Test
+	public void quotaShouldCalculateCorrectNumberOfInstallments() {
+		
+		Financing f = FinancingFactory.createFinancing(200000.0, 7000.0, 80);
+		double expectedValue = 2000.0;
+		
+		double value = f.quota();
+		
+		Assertions.assertTrue(expectedValue == value);
+	}
 }
